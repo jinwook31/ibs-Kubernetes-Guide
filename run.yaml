@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: torch
+spec:
+  restartPolicy: Never
+
+  volumes:
+  - name: pvc-volume
+    persistentVolumeClaim:
+     claimName: jinwook-pvc
+  - name: shmdir
+    emptyDir:
+      medium: Memory
+
+  containers:
+  - name: gpu-container
+    image: well.local:5000/pytorch
+    volumeMounts:
+    - mountPath: /home/jinwook
+      name: pvc-volume
+    - mountPath: /dev/shm
+      name: shmdir
+
+    command:
+      - "/bin/sh"
+      - "-c"
+    args:
+      #- cd /home/jinwook/ && ls -al > /home/jinwook/lists.txt
+      # momentum encoder, predictor, no_grad, intra_symmetric
+      - cd /home/jinwook/CLMI_origin && python3 train.py —image_pretrained True —tid zeroshot > log.txt
+    securityContext:
+      allowPrivilegeEscalation: false
+
+    resources:
+      requests:
+        nvidia.com/gpu: 4
+      limits:
+        nvidia.com/gpu: 4
