@@ -10,7 +10,7 @@ Kubectl 기본 명령어: https://subicura.com/k8s/guide/kubectl.html#%E1%84%85%
 
 ---
 
-###[Image 생성 관련]
+### [Image 생성 관련]
 
 Docker image pull 하거나 업로드 (필요에 맞게 docker 만들기: https://www.nurinamu.com/dev/2016/07/04/create-a-docker-image/)
 
@@ -19,7 +19,7 @@ docker tag (기존이름) well.local:5000/(바꿀 이름)
 docker psuh well.local:5000/(이름)
 
 
-###[Image에 추가 Lib 설치 시]
+### [Image에 추가 Lib 설치 시]
 
 Docker 실행 후 설치
 
@@ -28,7 +28,7 @@ Local에서 docker commit (container 이름) (image 이름)
 docker push (image 이름)
 
 
-###[코드 실행 시]
+### [코드 실행 시]
 
 yaml 파일 작성 후 실행하려는 코드를 /data/(username) 위치에 놓기
 
