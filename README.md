@@ -9,24 +9,31 @@ Windows (Putty): https://www.putty.org/
 File Upload: https://winscp.net/eng/download.php
 
 
+
 ### 계정 생성 (e8 only): 
 ```
 cd ~/k8s/user-manager 
 ./user-create.sh (user name) (용량)
 ```
 
+
 ### [Image 생성 관련]
 
-Docker image pull 하거나 업로드 (필요에 맞게 docker 만들기: https://www.nurinamu.com/dev/2016/07/04/create-a-docker-image/)
+Docker image pull 하거나 업로드 (필요에 맞게 docker 만들기: https://www.nurinamu.com/dev/2016/07/04/create-a-docker-image/). 
+
+이때 주의해야할 점은 꼭 이름 앞에 well.local:5000을 붙여야합니다.
 ```
 docker tag (기존이름) well.local:5000/(바꿀 이름)
 docker psuh well.local:5000/(이름)
 ```
 
+
 ### [Image에 추가 Lib 설치 시]
 
-Local에서 Docker 실행 후 설치
+Docker를 설치했지만 추가적인 라이브러리가 필요한 경우가 있습니다. 예를 들어 MNE 라이브러리를 사용해야하는 경우 Local에서 Docker를 실행 한 후 pip 또는 apt-get 등으로 설치를 한 후에 docker를 commit & push 하면 업데이트된 버젼이 docker 목록에 나타날 것입니다.
 ```
+docker 실행 명령어 @@@
+
 docker commit (container 이름) (image 이름)
 docker push (image 이름)
 ```
@@ -35,13 +42,26 @@ docker push (image 이름)
 
 yaml 파일 작성 후 실행하려는 코드를 /data/(user name) 위치에 놓기
 실행 관련 명령어:
+
+Job 생성
 ```
 kubectl create -f (파일이름).yaml
-kubectl delete pod/(파일이름)
-kubectl get pod
-kubectl logs (pod 이름)
 ```
 
+Job 종료
+```
+kubectl delete pod/(파일이름)
+```
+
+Job 상태 조회
+```
+kubectl get pod
+```
+
+Job Log 조회
+```
+kubectl logs (pod 이름)
+```
 
 
 ### Reference & Useful Links
