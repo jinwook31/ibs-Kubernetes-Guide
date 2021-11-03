@@ -47,8 +47,12 @@ docker psuh well.local:5000/(이름)
 
 Docker를 설치했지만 추가적인 라이브러리가 필요한 경우가 있습니다. 예를 들어 MNE 라이브러리를 사용해야하는 경우 Local에서 Docker를 실행 한 후 pip 또는 apt-get 등으로 설치를 한 후에 docker를 commit & push 하면 업데이트된 버젼이 docker 목록에 나타날 것입니다.
 ```
-docker 실행 명령어 @@@
+docker run -ti (image 이름) bash
 
+# pip 또는 apt-get 으로 원하는 package 설치
+# 설치 후 exit 으로 나간 뒤 
+
+# 작업한 container를 image로 만들기
 docker commit (container 이름) (image 이름)
 docker push (image 이름)
 ```
