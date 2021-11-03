@@ -59,7 +59,14 @@ docker push (image 이름)
 
 ### 코드 실행 시
 
-yaml 파일 작성 후 실행하려는 코드를 /data/(user name) 위치에 놓기
+yaml 파일 작성 후 실행하려는 코드를 /data/(user name) 위치에 놓습니다.
+
+yaml 파일 위치 : /home/(user name)
+data 및 코드 위치 : /data/(user name)
+
+yaml args 부분에 실행 명령어 부분에 `cd /home/jinwook && python3 test.py > log.txt` 이 부분이 코드를 실행하는 부분입니다. `cd /home/jinwook`은 경로 접근, `python3 test.py > log.txt`은 코드 실행 및 생기는 log를 txt 파일로 저장한다라는 의미입니다.
+
+
 실행 관련 명령어:
 
 Job 생성
@@ -75,12 +82,16 @@ kubectl delete pod/(파일이름)
 Job 상태 조회
 ```
 kubectl get pod
+
+NAME    READY   STATUS      RESTARTS   AGE
+torch   0/1     Completed   0          6s
 ```
 
 Job Log 조회
 ```
 kubectl logs (pod 이름)
 ```
+
 
 
 ### Reference & Useful Links
