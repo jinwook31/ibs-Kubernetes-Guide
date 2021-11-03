@@ -16,6 +16,8 @@ cd ~/k8s/user-manager
 ./user-create.sh (user name) (용량)
 ```
 
+![user_create](https://raw.githubusercontent.com/jinwook31/ibs-Kubernetes-Guide/main/img/user%20create.PNG)
+
 초기 설정으로는 id: (user name), pw: (user name)으로 동일합니다. 비밀번호를 수정하기 위해서는 해당 계정으로 로그인 후에 아래 명령어로 수정해주면 됩니다.
 
 ```
