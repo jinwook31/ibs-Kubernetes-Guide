@@ -44,41 +44,42 @@ docker psuh well.local:5000/(Docker image name)
 
 ### Adding new Library to the Image
 
-Docker를 설치했지만 추가적인 라이브러리가 필요한 경우가 있습니다. 예를 들어 MNE 라이브러리를 사용해야하는 경우 Local에서 Docker를 실행 한 후 pip 또는 apt-get 등으로 설치를 한 후에 docker를 commit & push 하면 업데이트된 버젼이 docker 목록에 나타날 것입니다.
+There will be some case case you need additional libraries after making docker. For example, if you need to use the MNE library, run Docker locally, install the libs with pip or apt-get, and then commit & push docker, and the updated version will appear in the docker list.
+
 ```
-docker run -ti (image 이름) bash
+docker run -ti (image name) bash
 
-# pip 또는 apt-get 으로 원하는 package 설치
-# 설치 후 exit 으로 나간 뒤 
+# Install additional package with 'pip' or 'apt-get' command
+# Install all the packages and go back with the 'exit' command
 
-# 작업한 container를 image로 만들기
-docker commit (container 이름) (image 이름)
-docker push (image 이름)
+# Making a container with the image
+docker commit (container name) (image name)
+docker push (image name)
 ```
 
 ### When running the code
 
-yaml 파일 작성 후 실행하려는 코드를 /data/(user name) 위치에 놓습니다.
+Write yaml file and place the code that you want to run in /data/(user name) .
 
-yaml 파일 위치 : /home/(user name)
-data 및 코드 위치 : /data/(user name)
+locate yaml file : /home/(user name)
+locate data and code : /data/(user name)
 
-yaml args 부분에 실행 명령어 부분에 `cd /home/jinwook && python3 test.py > log.txt` 이 부분이 코드를 실행하는 부분입니다. `cd /home/jinwook`은 경로 접근, `python3 test.py > log.txt`은 코드 실행 및 생기는 log를 txt 파일로 저장한다라는 의미입니다.
+In the yaml args part, `cd /home/jinwook && python3 test.py > log.txt` this part executes the code. `cd /home/jinwook` means path access, `python3 test.py > log.txt` means code execution and log generated as txt file.
 
 
 Command for Initializing the Code in Kube:
 
 Create Job
 ```
-kubectl create -f (파일이름).yaml
+kubectl create -f (file name).yaml
 ```
 
 End Job
 ```
-kubectl delete pod/(파일이름)
+kubectl delete pod/(file name)
 ```
 
-Job status 조회
+View Job status
 ```
 kubectl get pod
 
@@ -88,7 +89,7 @@ torch   0/1     Completed   0          6s
 
 View Job Log 
 ```
-kubectl logs (pod 이름)
+kubectl logs (pod name)
 ```
 
 
