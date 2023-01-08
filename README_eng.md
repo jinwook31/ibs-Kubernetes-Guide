@@ -56,7 +56,7 @@ docker commit (container 이름) (image 이름)
 docker push (image 이름)
 ```
 
-### 코드 실행 시
+### When running the code
 
 yaml 파일 작성 후 실행하려는 코드를 /data/(user name) 위치에 놓습니다.
 
@@ -66,19 +66,19 @@ data 및 코드 위치 : /data/(user name)
 yaml args 부분에 실행 명령어 부분에 `cd /home/jinwook && python3 test.py > log.txt` 이 부분이 코드를 실행하는 부분입니다. `cd /home/jinwook`은 경로 접근, `python3 test.py > log.txt`은 코드 실행 및 생기는 log를 txt 파일로 저장한다라는 의미입니다.
 
 
-실행 관련 명령어:
+Command for Initializing the Code in Kube:
 
-Job 생성
+Create Job
 ```
 kubectl create -f (파일이름).yaml
 ```
 
-Job 종료
+End Job
 ```
 kubectl delete pod/(파일이름)
 ```
 
-Job 상태 조회
+Job status 조회
 ```
 kubectl get pod
 
@@ -86,7 +86,7 @@ NAME    READY   STATUS      RESTARTS   AGE
 torch   0/1     Completed   0          6s
 ```
 
-Job Log 조회
+View Job Log 
 ```
 kubectl logs (pod 이름)
 ```
@@ -95,8 +95,8 @@ kubectl logs (pod 이름)
 
 ### Reference & Useful Links
 
-윈도우 사용시 SSH: https://mobaxterm.mobatek.net/
+Windows SSH: https://mobaxterm.mobatek.net/
 
 MATLAB Docker Image: https://github.com/mathworks-ref-arch/matlab-dockerfile
 
-Kubectl 기본 명령어: https://subicura.com/k8s/guide/kubectl.html#%E1%84%85%E1%85%B5%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3-%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5-delete
+Basic Kubectl command: https://subicura.com/k8s/guide/kubectl.html#%E1%84%85%E1%85%B5%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3-%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A5-delete
