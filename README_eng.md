@@ -1,6 +1,6 @@
 # ibs-Kubernetes-Guide
 
-### SSH 연결
+### SSH Connection
 
 Mac (Terminal): https://eunguru.tistory.com/122
 
@@ -10,7 +10,7 @@ File Upload: https://winscp.net/eng/download.php
 
 
 
-### 계정 생성 (e8 only): 
+### Make new user account (e8 only): 
 ```
 cd ~/k8s/user-manager 
 ./user-create.sh (user name) (용량)
@@ -18,8 +18,7 @@ cd ~/k8s/user-manager
 
 ![user_create](https://raw.githubusercontent.com/jinwook31/ibs-Kubernetes-Guide/main/img/user%20create.PNG)
 
-초기 설정으로는 id: (user name), pw: (user name)으로 동일합니다. 비밀번호를 수정하기 위해서는 해당 계정으로 로그인 후에 아래 명령어로 수정해주면 됩니다.
-
+For initial setting -> id: (user name), pw: (user name)  id and pw is equal. In order to change the password, you need to log-in and use the command below.
 ```
 passwd
 ```
@@ -30,20 +29,20 @@ passwd
 
 ### Docker Image Pull & Upload
 
-- Docker Hub에서 가져오기: https://hub.docker.com/
-- 필요에 맞게 Docker 만들기: https://www.nurinamu.com/dev/2016/07/04/create-a-docker-image/). 
+- Import from Docker Hub (Good way to start making Docker Image): https://hub.docker.com/
+- Create Docker to fit your needs: https://www.nurinamu.com/dev/2016/07/04/create-a-docker-image/).
 
-프로젝트에 맞는 Docker Image를 가져온 뒤에 추가로 필요한 library는 docker 명령어로 Image에서 설치를 해주면 됩니다. 그리고 이때 주의해야할 점은 꼭 이름 앞에 well.local:5000을 붙여야합니다.
+After importing the Docker Image suitable for the project, additionally required libraries can be installed from the Image with the docker command. The thing to be careful about at this is to put the 'well.local:5000' in front of the name.
 
 ```
 docker ps -a
 docker images
-docker tag (기존이름) well.local:5000/(바꿀 이름)
-docker psuh well.local:5000/(이름)
+docker tag (prev name) well.local:5000/(new name)
+docker psuh well.local:5000/(Docker image name)
 ```
 
 
-### Image에 추가 Lib 설치 시
+### Adding new Library to the Image
 
 Docker를 설치했지만 추가적인 라이브러리가 필요한 경우가 있습니다. 예를 들어 MNE 라이브러리를 사용해야하는 경우 Local에서 Docker를 실행 한 후 pip 또는 apt-get 등으로 설치를 한 후에 docker를 commit & push 하면 업데이트된 버젼이 docker 목록에 나타날 것입니다.
 ```
